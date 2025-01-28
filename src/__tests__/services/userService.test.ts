@@ -15,7 +15,7 @@ describe('UserService', () => {
     const mockUserInput = {
       email: 'test@example.com',
       name: 'Test User',
-      password: 'password123'
+      password: 'password123',
     };
 
     const mockCreatedUser: User = {
@@ -24,7 +24,7 @@ describe('UserService', () => {
       name: mockUserInput.name,
       password: 'hashedPassword',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
 
     it('should create a new user successfully', async () => {
@@ -38,17 +38,15 @@ describe('UserService', () => {
           email: mockUserInput.email,
           name: mockUserInput.name,
           // Password should be hashed
-          password: expect.any(String)
-        })
+          password: expect.any(String),
+        }),
       });
     });
 
     it('should throw error if email already exists', async () => {
       prisma.user.create.mockRejectedValue(new Error('Email already exists'));
 
-      await expect(userService.createUser(mockUserInput))
-        .rejects
-        .toThrow('Email already exists');
+      await expect(userService.createUser(mockUserInput)).rejects.toThrow('Email already exists');
     });
   });
 
@@ -59,7 +57,7 @@ describe('UserService', () => {
       name: 'Test User',
       password: 'hashedPassword',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
 
     it('should find user by id', async () => {
@@ -69,7 +67,7 @@ describe('UserService', () => {
 
       expect(result).toEqual(mockUser);
       expect(prisma.user.findUnique).toHaveBeenCalledWith({
-        where: { id: 1 }
+        where: { id: 1 },
       });
     });
 
@@ -83,4 +81,4 @@ describe('UserService', () => {
   });
 
   // Add more test cases for other UserService methods
-}); 
+});

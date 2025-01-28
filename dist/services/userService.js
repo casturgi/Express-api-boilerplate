@@ -20,7 +20,7 @@ class UserService {
     async createUser(userData) {
         try {
             return await this.prisma.user.create({
-                data: userData
+                data: userData,
             });
         }
         catch (error) {
@@ -35,7 +35,7 @@ class UserService {
     async getUserById(id) {
         try {
             return await this.prisma.user.findUnique({
-                where: { id }
+                where: { id },
             });
         }
         catch (error) {
@@ -49,7 +49,7 @@ class UserService {
         try {
             return await this.prisma.user.update({
                 where: { id },
-                data: userData
+                data: userData,
             });
         }
         catch (error) {
@@ -64,7 +64,7 @@ class UserService {
     async deleteUser(id) {
         try {
             await this.prisma.user.delete({
-                where: { id }
+                where: { id },
             });
         }
         catch (error) {

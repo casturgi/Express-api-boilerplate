@@ -37,7 +37,7 @@ class CronService {
 
         this.jobs.set(jobConfig.name, {
           config: jobConfig,
-          instance: job
+          instance: job,
         });
 
         console.log(`Job scheduled: ${jobConfig.name}`);
@@ -107,7 +107,7 @@ class CronService {
       jobsList.push({
         name,
         schedule: job.config.schedule,
-        enabled: job.config.enabled
+        enabled: job.config.enabled,
       });
     }
     return jobsList;
@@ -122,10 +122,9 @@ class CronService {
   }
 
   public getActiveJobsCount(): number {
-    return Array.from(this.jobs.values()).filter(
-      job => job.instance.getStatus() === 'scheduled'
-    ).length;
+    return Array.from(this.jobs.values()).filter((job) => job.instance.getStatus() === 'scheduled')
+      .length;
   }
 }
 
-export default new CronService(); 
+export default new CronService();

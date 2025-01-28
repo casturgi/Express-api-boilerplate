@@ -8,7 +8,7 @@ exports.jobs = [
         enabled: true,
         task: () => {
             console.log('Hello cron!', new Date().toISOString());
-        }
+        },
     },
     {
         name: 'daily-cleanup',
@@ -16,7 +16,7 @@ exports.jobs = [
         enabled: true,
         task: () => {
             console.log('Running daily cleanup...', new Date().toISOString());
-        }
+        },
     },
     {
         name: 'weekly-report',
@@ -24,7 +24,7 @@ exports.jobs = [
         enabled: false,
         task: () => {
             console.log('Generating weekly report...', new Date().toISOString());
-        }
-    }
+        },
+    },
 ];
 //# sourceMappingURL=cronJobs.js.map

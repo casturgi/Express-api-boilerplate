@@ -37,19 +37,19 @@ interface CustomError extends Error {
 
 // Declare modules without type definitions
 declare module '*.yaml' {
-  const content: any;
+  const content: Record<string, unknown>;
   export default content;
 }
 
 declare module '*.json' {
-  const content: any;
+  const content: Record<string, unknown>;
   export default content;
 }
 
 // Global type declarations
 type Nullable<T> = T | null;
 type Optional<T> = T | undefined;
-type AsyncFunction<T = void> = (...args: any[]) => Promise<T>;
+type AsyncFunction<T = void, Args extends unknown[] = []> = (...args: Args) => Promise<T>;
 
 // Environment variables type declaration
 declare namespace NodeJS {
@@ -70,7 +70,7 @@ type DeepPartial<T> = {
 
 type ExcludeKeys<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-type RequiredKeys<T, K extends keyof T> = T & Required<Pick<T, K>>; 
+type RequiredKeys<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
 export interface User {
   id: number;
@@ -106,4 +106,4 @@ export interface Route {
 
 export interface DatabaseError extends Error {
   code?: string;
-} 
+}

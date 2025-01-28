@@ -11,7 +11,7 @@ function restartCrons() {
     const jobs = cronService_1.default.listJobs();
     console.log('\nActive Cron Jobs:');
     console.log('================\n');
-    jobs.forEach(job => {
+    jobs.forEach((job) => {
         console.log(`Name: ${job.name}`);
         console.log(`Schedule: ${job.schedule}`);
         console.log(`Status: ${job.enabled ? 'Enabled' : 'Disabled'}`);

@@ -20,4 +20,4 @@ const gracefulShutdown = (signal: string): void => {
 process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
 process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
-export default server; 
+export default server;

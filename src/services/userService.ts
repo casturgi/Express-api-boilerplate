@@ -22,7 +22,7 @@ class UserService {
   async createUser(userData: UserInput): Promise<User> {
     try {
       return await this.prisma.user.create({
-        data: userData
+        data: userData,
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -37,7 +37,7 @@ class UserService {
   async getUserById(id: number): Promise<User | null> {
     try {
       return await this.prisma.user.findUnique({
-        where: { id }
+        where: { id },
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -51,7 +51,7 @@ class UserService {
     try {
       return await this.prisma.user.update({
         where: { id },
-        data: userData
+        data: userData,
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -66,7 +66,7 @@ class UserService {
   async deleteUser(id: number): Promise<void> {
     try {
       await this.prisma.user.delete({
-        where: { id }
+        where: { id },
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -80,4 +80,4 @@ class UserService {
 }
 
 export default new UserService();
-export { UserService }; 
+export { UserService };

@@ -7,7 +7,7 @@ describe('CronService', () => {
 
   it('should initialize enabled jobs', () => {
     const jobs = cronService.listJobs();
-    const enabledJobs = jobs.filter(job => job.enabled);
+    const enabledJobs = jobs.filter((job) => job.enabled);
     expect(jobs.length).toBeGreaterThan(0);
     expect(enabledJobs.length).toBe(2); // Based on our config
   });
@@ -28,4 +28,4 @@ describe('CronService', () => {
     expect(job?.config.name).toBe('hello-cron');
     expect(job?.config.schedule).toBe('*/30 * * * * *');
   });
-}); 
+});

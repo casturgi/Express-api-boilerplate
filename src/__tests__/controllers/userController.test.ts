@@ -12,7 +12,7 @@ describe('UserController', () => {
     email: 'test@example.com',
     name: 'Test User',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 
   beforeEach(() => {
@@ -27,10 +27,7 @@ describe('UserController', () => {
     it('should return all users', async () => {
       (userService.getAllUsers as jest.Mock).mockResolvedValue([mockUser]);
 
-      await userController.getAllUsers(
-        mockRequest as Request,
-        mockResponse as Response
-      );
+      await userController.getAllUsers(mockRequest as Request, mockResponse as Response);
 
       expect(mockResponse.json).toHaveBeenCalledWith([mockUser]);
     });
@@ -38,13 +35,10 @@ describe('UserController', () => {
     it('should handle errors', async () => {
       (userService.getAllUsers as jest.Mock).mockRejectedValue(new Error('Failed to fetch users'));
 
-      await userController.getAllUsers(
-        mockRequest as Request,
-        mockResponse as Response
-      );
+      await userController.getAllUsers(mockRequest as Request, mockResponse as Response);
 
       expect(mockResponse.status).toHaveBeenCalledWith(500);
       expect(mockResponse.json).toHaveBeenCalledWith({ error: 'Failed to fetch users' });
     });
   });
-}); 
+});
